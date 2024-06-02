@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../app.component.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="component1">
+        <div id="component2">
+            <form [formGroup]="Forms">
+                <div>
+                    <div>
+                        <input id="input1" placeholder="Writer name " type="text" formControlName="name">
+                        
+    
+                    </div>
+                    <div>
+                        <input id="input1" placeholder="age" type="number" formControlName="age">
+                    </div>
+                    <div>
+                        <input id="input1" placeholder="phone" type="number" formControlName="phone">
+                    </div>
+                    <div>
+                        <select class="form-select" formControlName="nationalityId" [compareWith]="comparewith" id="select1">
+                            <option *ngFor="let data of nationality" [ngValue]="data.id">{{data.country}}
+                            </option>
+                        
+                        </select>
+                    </div>
+                    <div>
+                        <select class="form-select" formControlName="genderId" [compareWith]="comparewith2" id="select1">
+                            <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}</option>
+                        
+                        
+                        </select>
+                    </div>
+                    <div>
+                        <button type="button" id="button1" class="btn btn-primary" (click)="Activate('togglar1')">Add Student</button>
+
+                    </div>
+                    <div>
+                        <button type="button" id="button1" class="btn btn-success" (click)="Activate('togglar2')">Student list</button>
+
+                    </div>
+                 
+                </div>
+                
+            
+            
+            </form>
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar2', 'transition2': togglar != 'togglar2'}">
+            <div>
+                <button id="button3" (click)="Activate('')">
+                    <i class="bi bi-x-circle">
+
+                    </i>
+                </button>
+            </div>
+            <div id="component4">
+                <div>
+                    <div id="component5" *ngFor="let item of writer">
+                        <p>
+                            Name: {{item.name}}
+                        </p>
+                        <button id="button5" (click)="Activate('togglar3', item)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button id="button4" (click)="Activate('togglar4', item)">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar3', 'transition2': togglar != 'togglar3'}">
+            <div>
+                <button id="button3" (click)="Activate('togglar2')">
+                    <i class="bi bi-x-circle">
+                    </i>
+                </button>
+            </div>
+            <div id="component7">
+                <div>
+                    <p>
+                        Writer ID:  {{selected?.id}}
+                        
+                    </p>
+                </div>
+                <div>
+                    <P>
+                        Name: <input id="input2" [(ngModel)]="newName" [placeholder]="selected?.name">
+                    </P>
+                </div>
+                <div>
+                    <P>
+                        Age: <input id="input2" [(ngModel)]="newAge" [placeholder]="selected?.age">
+                    </P>
+                </div>
+                <div>
+                    <P>
+                        Phone: <input id="input2" [(ngModel)]="newPhone" [placeholder]="selected?.phone">
+                    </P>
+                </div>
+                <div style="align-items: center;  display: flex;">
+       
+                        <P>
+                            Nationality: 
+                        </P>
+
+            
+           
+                        <select class="form-select"  id="select2">
+                            <option *ngFor="let data of nationality" [ngValue]="newNationality">{{data.country}}
+                            </option>
+                        
+                        </select>
+            
+                    
+                    
+                </div>
+                <div style="align-items: center;  display: flex;">
+       
+                        <p>
+                            Gender: 
+                        </p>
+               
+              
+                        <select class="form-select"  id="select2">
+                            <option *ngFor="let data of gender" [ngValue]="newGender">{{data.gender}}
+                            </option>
+                        
+                        </select>
+                
+                    
+                    
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Salvar ✏💾</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar4', 'transition2': togglar != 'togglar4'}">
+            <div>
+                <button id="button3" (click)="Activate('togglar2')">
+                    <i class="bi bi-x-circle">
+
+                    </i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

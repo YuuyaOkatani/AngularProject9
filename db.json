@@ -1,0 +1,84 @@
+{
+  "writers": [
+    {
+      "id": 1,
+      "name": "larry",
+      "nationality": [],
+      "gender": [],
+      "age": "",
+      "phone": ""
+    },
+    {
+      "id": 2,
+      "name": "",
+      "nationality": 2,
+      "gender": 2,
+      "phone": 1111111111111,
+      "age": 111111
+    },
+    {
+      "id": 3,
+      "name": "ssssssssssssssssssssssss",
+      "nationality": 3,
+      "gender": 1,
+      "phone": 123,
+      "age": 123
+    }
+  ],
+  "books": [],
+  "types": [],
+  "gender": [
+    {
+      "id": 1,
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "gender": "female"
+    }
+  ],
+  "nationality": [
+    {
+      "id": 1,
+      "country": "indian"
+    },
+    {
+      "id": 2,
+      "country": "american"
+    },
+    {
+      "id": 3,
+      "country": "chinese"
+    },
+    {
+      "id": 4,
+      "country": "japanese"
+    }
+  ],
+  "format": [
+    {
+      "id": 1,
+      "name": "paperback"
+    },
+    {
+      "id": 2,
+      "name": "hardcover"
+    },
+    {
+      "id": 3,
+      "name": "ebook"
+    },
+    {
+      "id": 4,
+      "name": "audiobook"
+    },
+    {
+      "id": 5,
+      "name": "magazine"
+    },
+    {
+      "id": 6,
+      "name": "comic"
+    }
+  ]
+}
