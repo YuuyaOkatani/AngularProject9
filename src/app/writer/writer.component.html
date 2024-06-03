@@ -23,25 +23,25 @@
                         <input id="input1" placeholder="phone" type="number" formControlName="phone">
                     </div>
                     <div>
-                        <select class="form-select" formControlName="nationalityId" [compareWith]="comparewith" id="select1">
+                        <select class="form-select" formControlName="nationality" [compareWith]="comparewith" id="select1">
                             <option *ngFor="let data of nationality" [ngValue]="data.id">{{data.country}}
                             </option>
                         
                         </select>
                     </div>
                     <div>
-                        <select class="form-select" formControlName="genderId" [compareWith]="comparewith2" id="select1">
+                        <select class="form-select" formControlName="gender" [compareWith]="comparewith2" id="select1">
                             <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}</option>
                         
                         
                         </select>
                     </div>
                     <div>
-                        <button type="button" id="button1" class="btn btn-primary" (click)="Activate('togglar1')">Add Student</button>
+                        <button type="button" id="button1" class="btn btn-primary" (click)="Activate('togglar1')">Add writer</button>
 
                     </div>
                     <div>
-                        <button type="button" id="button1" class="btn btn-success" (click)="Activate('togglar2')">Student list</button>
+                        <button type="button" id="button1" class="btn btn-success" (click)="Activate('togglar2')">Writers list</button>
 
                     </div>
                  
@@ -78,32 +78,32 @@
         </div>
 
         <div id="component3" [ngClass]="{'transition1': togglar == 'togglar3', 'transition2': togglar != 'togglar3'}">
+            
             <div>
                 <button id="button3" (click)="Activate('togglar2')">
                     <i class="bi bi-x-circle">
                     </i>
                 </button>
             </div>
-            <div id="component7">
+            <form [formGroup]="Forms" id="component7">
                 <div>
                     <p>
                         Writer ID:  {{selected?.id}}
-                        
                     </p>
                 </div>
                 <div>
                     <P>
-                        Name: <input id="input2" [(ngModel)]="newName" [placeholder]="selected?.name">
+                        Name: <input id="input2"  [placeholder]="selected?.name" [(ngModel)]="newName" formControlName="name">
                     </P>
                 </div>
                 <div>
                     <P>
-                        Age: <input id="input2" [(ngModel)]="newAge" [placeholder]="selected?.age">
+                        Age: <input id="input2"  [placeholder]="selected?.age" [(ngModel)]="newAge" formControlName="age">
                     </P>
                 </div>
                 <div>
                     <P>
-                        Phone: <input id="input2" [(ngModel)]="newPhone" [placeholder]="selected?.phone">
+                        Phone: <input id="input2"  [placeholder]="selected?.phone" [(ngModel)]="newPhone" formControlName="phone">
                     </P>
                 </div>
                 <div style="align-items: center;  display: flex;">
@@ -114,8 +114,8 @@
 
             
            
-                        <select class="form-select"  id="select2">
-                            <option *ngFor="let data of nationality" [ngValue]="newNationality">{{data.country}}
+                        <select class="form-select"  id="select2" formControlName="nationality" [(ngModel)]="newNationality" >
+                            <option *ngFor="let data of nationality" [ngValue]="data.id"   >{{data.country}}
                             </option>
                         
                         </select>
@@ -130,8 +130,8 @@
                         </p>
                
               
-                        <select class="form-select"  id="select2">
-                            <option *ngFor="let data of gender" [ngValue]="newGender">{{data.gender}}
+                        <select class="form-select"  id="select2" formControlName="gender" [(ngModel)]="newGender">
+                            <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}
                             </option>
                         
                         </select>
@@ -142,8 +142,12 @@
                 <div>
                     <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Salvar ✏💾</button>
                 </div>
-
-            </div>
+                
+            
+            
+            </form>
+           
+            
         </div>
 
         <div id="component3" [ngClass]="{'transition1': togglar == 'togglar4', 'transition2': togglar != 'togglar4'}">
@@ -153,7 +157,19 @@
 
                     </i>
                 </button>
+                <div id="component9">
+                    <div class="alert alert-danger" id="alert1" role="alert">
+                        The student will be permanently deleted from the list. Are you sure?
+                      </div>
+                    <div>
+                        
+                          <button type="button"  class="btn btn-outline-danger" (click)="Activate('togglar6')">Yes, i'm sure. Delete</button>
+                    </div>
+                  
+                </div>
             </div>
+   
+                
         </div>
 
     </div>

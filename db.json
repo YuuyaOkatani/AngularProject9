@@ -2,31 +2,61 @@
   "writers": [
     {
       "id": 1,
-      "name": "larry",
-      "nationality": [],
-      "gender": [],
-      "age": "",
-      "phone": ""
+      "name": "jorge",
+      "nationality": 2,
+      "gender": 1,
+      "phone": 19992,
+      "age": 19
     },
     {
       "id": 2,
-      "name": "",
-      "nationality": 2,
-      "gender": 2,
-      "phone": 1111111111111,
-      "age": 111111
+      "name": "larry",
+      "nationality": 4,
+      "gender": 1,
+      "phone": 1938294382,
+      "age": 19
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "name": "18984",
+      "type": 1,
+      "writer": 1,
+      "format": 2,
+      "signed": true
+    },
+    {
+      "id": 2,
+      "name": "joooj",
+      "type": 2,
+      "writer": 2,
+      "format": 2,
+      "signed": true
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "fiction"
+    },
+    {
+      "id": 2,
+      "name": "non-fiction"
     },
     {
       "id": 3,
-      "name": "ssssssssssssssssssssssss",
-      "nationality": 3,
-      "gender": 1,
-      "phone": 123,
-      "age": 123
+      "name": "biography"
+    },
+    {
+      "id": 4,
+      "name": "history"
+    },
+    {
+      "id": 5,
+      "name": "poetry"
     }
   ],
-  "books": [],
-  "types": [],
   "gender": [
     {
       "id": 1,
@@ -55,30 +85,30 @@
       "country": "japanese"
     }
   ],
-  "format": [
+  "formats": [
     {
       "id": 1,
-      "name": "paperback"
+      "format": "paperback"
     },
     {
       "id": 2,
-      "name": "hardcover"
+      "format": "hardcover"
     },
     {
       "id": 3,
-      "name": "ebook"
+      "format": "ebook"
     },
     {
       "id": 4,
-      "name": "audiobook"
+      "format": "audiobook"
     },
     {
       "id": 5,
-      "name": "magazine"
+      "format": "magazine"
     },
     {
       "id": 6,
-      "name": "comic"
+      "format": "comic"
     }
   ]
 }

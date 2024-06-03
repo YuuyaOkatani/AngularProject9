@@ -8,6 +8,182 @@
 </head>
 <body>
     <div class="component1">
+        <div id="component2">
+            <form [formGroup]="Forms">
+                <div>
+                    <div>
+                        <input id="input1" placeholder="Book name " type="text" formControlName="name">
+                        
+    
+                    </div>
+                    
+                    
+                    <div>
+                        <select class="form-select" formControlName="writer" [compareWith]="comparewith" id="select1">
+                            <option *ngFor="let data of writers" [ngValue]="data.id">{{data.name}}
+                            </option>
+                        
+                        </select>
+                    </div>
+                    <div>
+                        <select class="form-select" formControlName="type" [compareWith]="comparewith2" id="select1">
+                            <option *ngFor="let data of types" [ngValue]="data.id">{{data.name}}</option>
+                        
+                        
+                        </select>
+                    </div>
+                    <div style="margin-top: 10px; margin-bottom: 10px; width: 380px;">
+                        <span *ngFor="let item of formats">
+                            <input type="radio" formControlName="format" [value]="item.id" class="ms-2 me-1"/>
+                            <label style="color: aliceblue;">{{item.format}}</label>
+                        
+                        
+                        </span>
+                    </div>
+                    
+                    <div>
+                        <input class="form-check-input ms-2" type="checkbox" id="signed" formControlName="signed"/>
+                        <label style="color: aliceblue; margin-left: 10px;">Signed</label>
+                    </div>
+                    <div>
+                        <button type="button" id="button1" class="btn btn-primary" (click)="Activate('togglar1')">Add books</button>
+
+                    </div>
+                    <div>
+                        <button type="button" id="button1" class="btn btn-success" (click)="Activate('togglar2')">Book list</button>
+
+                    </div>
+                 
+                </div>
+                
+            
+            
+            </form>
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar2', 'transition2': togglar != 'togglar2'}">
+            <div>
+                <button id="button3" (click)="Activate('')">
+                    <i class="bi bi-x-circle">
+
+                    </i>
+                </button>
+            </div>
+            <div id="component4">
+                <div>
+                    <div id="component5" *ngFor="let item of books">
+                        <p>
+                            Name: {{item.name}}
+                        </p>
+                        <button id="button5" (click)="Activate('togglar3', item)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button id="button4" (click)="Activate('togglar4', item)">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar3', 'transition2': togglar != 'togglar3'}">
+            
+            <div>
+                <button id="button3" (click)="Activate('togglar2')">
+                    <i class="bi bi-x-circle">
+                    </i>
+                </button>
+            </div>
+            <form [formGroup]="Forms" id="component7">
+                <div>
+                    <p>
+                        Writer ID:  {{selected?.id}}
+                    </p>
+                </div>
+                <div>
+                    <P>
+                        Name: <input id="input2"  [placeholder]="selected?.name" [(ngModel)]="newName" formControlName="name">
+                    </P>
+                </div>
+                
+                <div style="align-items: center;  display: flex;">
+       
+                        <P>
+                            Writers: 
+                        </P>
+
+            
+           
+                        <select class="form-select"  id="select2" formControlName="writer" [(ngModel)]="newWriter" >
+                            <option *ngFor="let data of writers " [ngValue]="data.id"   >{{data.name}}
+                            </option>
+                        
+                        </select>
+            
+                    
+                    
+                </div>
+                <div style="align-items: center;  display: flex;">
+       
+                        <p>
+                            Type: 
+                        </p>
+               
+              
+                        <select class="form-select"  id="select2" formControlName="type" [(ngModel)]="newType">
+                            <option *ngFor="let data of types" [ngValue]="data.id">{{data.name}}
+                            </option>
+                        
+                        </select>
+                
+                    
+                    
+                </div>
+                <div style="margin-top: 10px; margin-bottom: 10px; width: 380px;">
+                    <span *ngFor="let item of formats" >
+                        <input type="radio" formControlName="format" [value]="item.id" [(ngModel)]="newFormat" class="ms-2 me-1"/>
+                        <label style="color: rgb(0, 0, 0);">{{item.format}}</label>
+                    
+                    
+                    </span>
+                </div>
+                
+                <div>
+                    <input class="form-check-input ms-2" type="checkbox" id="signed" formControlName="signed" [(ngModel)]="newSigned"/>
+                    <label style="color: rgb(0, 0, 0); margin-left: 10px;">Signed</label>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Salvar ✏💾</button>
+                </div>
+                
+            
+            
+            </form>
+           
+            
+        </div>
+
+        <div id="component3" [ngClass]="{'transition1': togglar == 'togglar4', 'transition2': togglar != 'togglar4'}">
+            <div>
+                <button id="button3" (click)="Activate('togglar2')">
+                    <i class="bi bi-x-circle">
+
+                    </i>
+                </button>
+                <div id="component9">
+                    <div class="alert alert-danger" id="alert1" role="alert">
+                        The student will be permanently deleted from the list. Are you sure?
+                      </div>
+                    <div>
+                        
+                          <button type="button"  class="btn btn-outline-danger" (click)="Activate('togglar6')">Yes, i'm sure. Delete</button>
+                    </div>
+                  
+                </div>
+            </div>
+   
+                
+        </div>
 
     </div>
     

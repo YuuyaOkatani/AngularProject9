@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { nationality } from '../nationality';
 import { gender } from '../gender';
 import { writer } from '../writer';
@@ -20,12 +20,16 @@ export class WriterComponent implements OnInit {
   nationality: nationality[] = []; 
   gender: gender[] = []; 
   writer: writer[] = [];
+
+  newName: any; 
+  newNationality: any; 
+  newGender: any; 
+  newPhone: any;
+  newAge: any;
+
   selected: any ;
-  newName: String = ''; 
-  newNationality: nationality[] = [];
-  newGender: gender[] = [];
-  newPhone = '';
-  newAge = '';
+  holder: number = 0; 
+ 
   
   togglar = ''; 
   constructor(
@@ -38,12 +42,12 @@ export class WriterComponent implements OnInit {
   ){
 
     this.Forms = formbuilder.group({
-      id: [''],
-      name: [''],
-      nationality: [''],
-      gender: [],
-      phone:[], 
-      age: [''],
+      id: [],
+      name: ['', [Validators.required]],
+      nationality: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      phone:['', [Validators.required]], 
+      age: ['', [Validators.required]],
    
 
     })
@@ -124,6 +128,11 @@ export class WriterComponent implements OnInit {
       break; 
       case 'togglar3':
         this.selected = item 
+        this.newName = this.selected.name
+        this.newAge = this.selected.age;
+        this.newNationality = this.selected.nationality;
+        this.newGender = this.selected.gender;
+        this.newPhone = this.selected.phone;
 
         console.log(this.selected)
          
@@ -131,26 +140,49 @@ export class WriterComponent implements OnInit {
 
       break; 
       case 'togglar4':
+        this.selected = item
 
 
       break; 
       case 'togglar5':
-        item.name = this.newName
+
         
-        console.log(item)
+
+        
+
+        
+       
+        this.holder = this.selected.id; 
+        this.selected = this.Forms.value; 
+
+        
+
+        this.selected.id = this.holder
         this.writerservice.updateWriter(this.selected).subscribe({
           next: () => {
-            this.newName = ''
-            this.newAge = ''
-            this.newPhone = ''
-            this.newNationality = []
-            this.newGender = []
+           
             this.loadWriters()
+            this.Forms.reset()
 
             
           }
 
         })
+        this.togglar = 'togglar2'
+      break; 
+      case 'togglar6':
+        
+        this.writerservice.deleteWriter(this.selected).subscribe({
+          next: () => {
+            const index = this.writer.indexOf(this.selected);
+            this.writer.splice(index, 1);
+            this.Forms.reset();
+          }
+        })
+        this.togglar = 'togglar2'
+      break;
+
+
       break; 
       case '':
     

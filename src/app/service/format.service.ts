@@ -12,7 +12,7 @@ export class FormatService {
 
   url = 'http://localhost:3000/formats'
 
-  getFormat(): Observable<format[]>{
+  getFormats(): Observable<format[]>{
     return this.http.get<format[]>(this.url);
 
   }
