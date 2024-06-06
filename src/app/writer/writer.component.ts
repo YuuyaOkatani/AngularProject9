@@ -8,6 +8,7 @@ import { WriterService } from '../service/writer.service';
 import { NationalityService } from '../service/nationality.service';
 
 import { GenderService } from '../service/gender.service';
+import { write } from 'node:fs';
 
 
 @Component({
@@ -29,6 +30,8 @@ export class WriterComponent implements OnInit {
 
   selected: any ;
   holder: number = 0; 
+  message = false; 
+  state = ''; 
  
   
   togglar = ''; 
@@ -101,6 +104,56 @@ export class WriterComponent implements OnInit {
 
   }
 
+  Message(item: string){
+  
+    this.state = item;
+    this.message = true
+            setTimeout(() => {
+            this.message = false
+            this.state = ''; 
+      
+      
+          }, 3000);
+
+  }
+
+  check(){
+    let array = [this.newName, this.newNationality, this.newGender, this.newPhone, this.newAge];
+    array.forEach(element => {
+      if(element == null || element == undefined || element == '') {
+          this.Message('incomplete_form')
+      }
+    })
+    if(this.state != 'incomplete_form'){
+      
+      this.writer.forEach(writer => {
+        if(this.newName.toLowerCase().trim() == writer.name.toLowerCase().trim()) {
+          this.Message('writer_exists')
+          
+        }
+      })
+
+      if(this.state !== 'writer_exists'){
+        this.Message('added_writer')
+            this.addWriter()
+      }
+    }
+    
+    
+          //TODO create code blocks to check if all values from the form are valid and difrent from null or '' or undefined
+  }
+
+  addWriter(){
+    this.writerservice.addWriter(this.Forms.value).subscribe({
+            next: data => {
+              this.writer.push(data);
+              this.Forms.reset();
+              this.Message('added_writer')
+            
+            }
+          })
+  }
+
   get genders(): any{
     return this.Forms.get('gender');
 
@@ -112,12 +165,8 @@ export class WriterComponent implements OnInit {
     switch(response){
 
       case 'togglar1':
-        this.writerservice.addWriter(this.Forms.value).subscribe({
-          next: data => {
-            this.writer.push(data);
-            this.Forms.reset();
-          }
-        })
+      this.check()
+    
         
       break; 
       case 'togglar2':
@@ -158,18 +207,36 @@ export class WriterComponent implements OnInit {
         
 
         this.selected.id = this.holder
-        this.writerservice.updateWriter(this.selected).subscribe({
-          next: () => {
-           
-            this.loadWriters()
-            this.Forms.reset()
-
+        
+        this.writer.forEach(data => {
+            if(data.name.trim().toLowerCase() === this.selected.name.trim().toLowerCase()){
+              this.Message('writer_exists')
             
-          }
+            
 
-        })
+            }
+            else{
+             
+
+            }
+          })
+          if(this.state !== 'writer_exists' ){
+            this.writerservice.updateWriter(this.selected).subscribe({ // search writer using id and update
+              next: () => {
+               
+                this.loadWriters()
+                this.Forms.reset()
+                this.Message('update_success')
+             
+    
+                
+              }
+    
+            })
+          }
         this.togglar = 'togglar2'
       break; 
+
       case 'togglar6':
         
         this.writerservice.deleteWriter(this.selected).subscribe({
@@ -177,13 +244,18 @@ export class WriterComponent implements OnInit {
             const index = this.writer.indexOf(this.selected);
             this.writer.splice(index, 1);
             this.Forms.reset();
+            this.Message('delete_success')
+        
+
+            
+
           }
         })
         this.togglar = 'togglar2'
       break;
 
 
-      break; 
+     
       case '':
     
 

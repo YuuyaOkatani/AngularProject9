@@ -28,12 +28,13 @@ export class BooksComponent implements OnInit {
   newFormat: any;
   newWriter: any;
   newSigned: any;
-  
+  message:boolean = false
 
 
 
   selected: any ;
   holder: number = 0; 
+  state = ''
  
   
   togglar = ''; 
@@ -115,6 +116,57 @@ export class BooksComponent implements OnInit {
 
   }
 
+  Message(item: string){
+  
+    this.state = item;
+    this.message = true
+            setTimeout(() => {
+            this.message = false
+            this.state = ''; 
+      
+      
+          }, 3000);
+
+  }
+
+  addBook(){
+    this.booksservice.addBooks(this.Forms.value).subscribe({
+      next: data => {
+        this.books.push(data);
+        this.Forms.reset();
+      }
+    })
+
+  }
+
+  check(){
+    let array = [this.newName, this.newWriter, this.newFormat, this.newSigned, this.newType];
+    array.forEach(element => {
+      if(element == null || element == undefined || element == '') {
+          this.Message('incomplete_form')
+      }
+    })
+    if(this.state != 'incomplete_form'){
+      
+      this.books.forEach(book => {
+        if(this.newName.toLowerCase().trim() === book.name.toLowerCase().trim()) {
+          this.Message('book_exists')
+          
+          
+      }
+      
+    
+    })
+    if(this.state != 'book_exists'){
+      this.Message('added_book')
+          this.addBook()
+    }
+    
+    }
+    
+          //TODO create code blocks to check if all values from the form are valid and difrent from null or '' or undefined
+  }
+
  
 
   Activate(response: string, item?: any){
@@ -123,12 +175,7 @@ export class BooksComponent implements OnInit {
     switch(response){
 
       case 'togglar1':
-        this.booksservice.addBooks(this.Forms.value).subscribe({
-          next: data => {
-            this.books.push(data);
-            this.Forms.reset();
-          }
-        })
+        this.check()
         
       break; 
       case 'togglar2':

@@ -10,11 +10,11 @@
     },
     {
       "id": 2,
-      "name": "larry",
-      "nationality": 4,
+      "name": "2",
+      "nationality": 1,
       "gender": 1,
-      "phone": 1938294382,
-      "age": 19
+      "phone": 312321,
+      "age": 31
     }
   ],
   "books": [
@@ -27,10 +27,26 @@
       "signed": true
     },
     {
-      "id": 2,
-      "name": "joooj",
+      "id": 3,
+      "name": "213",
+      "type": 1,
+      "writer": 1,
+      "format": 2,
+      "signed": true
+    },
+    {
+      "id": 4,
+      "name": "123",
       "type": 2,
-      "writer": 2,
+      "writer": 1,
+      "format": 2,
+      "signed": true
+    },
+    {
+      "id": 5,
+      "name": "123p",
+      "type": 1,
+      "writer": 1,
       "format": 2,
       "signed": true
     }

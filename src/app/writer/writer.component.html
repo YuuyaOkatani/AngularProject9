@@ -12,25 +12,25 @@
             <form [formGroup]="Forms">
                 <div>
                     <div>
-                        <input id="input1" placeholder="Writer name " type="text" formControlName="name">
+                        <input id="input1" placeholder="Writer name " type="text" formControlName="name" [(ngModel)]="newName">
                         
     
                     </div>
                     <div>
-                        <input id="input1" placeholder="age" type="number" formControlName="age">
+                        <input id="input1" placeholder="age" type="number" formControlName="age" [(ngModel)]="newAge">
                     </div>
                     <div>
-                        <input id="input1" placeholder="phone" type="number" formControlName="phone">
+                        <input id="input1" placeholder="phone" type="number" formControlName="phone" [(ngModel)]="newPhone">
                     </div>
                     <div>
-                        <select class="form-select" formControlName="nationality" [compareWith]="comparewith" id="select1">
+                        <select class="form-select" formControlName="nationality" [compareWith]="comparewith" id="select1" [(ngModel)]="newNationality">
                             <option *ngFor="let data of nationality" [ngValue]="data.id">{{data.country}}
                             </option>
                         
                         </select>
                     </div>
                     <div>
-                        <select class="form-select" formControlName="gender" [compareWith]="comparewith2" id="select1">
+                        <select class="form-select" formControlName="gender" [compareWith]="comparewith2" id="select1"  [(ngModel)]="newGender">
                             <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}</option>
                         
                         
@@ -171,6 +171,15 @@
    
                 
         </div>
+
+       
+        <div class="alert alert-success label1" role="alert"  [ngClass]="{'transition1': message == true , 'transition2': message == false}">
+            {{state === 'added_writer' ? 'The writer has been added successfully' :  
+                        state === 'update_success' ? 'The writer has been updated successfully' :
+                        state === 'delete_success'?  'The writer has been deleted successfully' : 
+                        state === 'writer_exists' ? 'The writer already exists': 
+                        state === 'incomplete_form' ? 'The form is incomplete': ''}} 
+          </div>
 
     </div>
     

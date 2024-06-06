@@ -12,21 +12,21 @@
             <form [formGroup]="Forms">
                 <div>
                     <div>
-                        <input id="input1" placeholder="Book name " type="text" formControlName="name">
+                        <input id="input1" placeholder="Book name " type="text" formControlName="name" [(ngModel)]="newName">
                         
     
                     </div>
                     
                     
                     <div>
-                        <select class="form-select" formControlName="writer" [compareWith]="comparewith" id="select1">
+                        <select class="form-select" formControlName="writer" [compareWith]="comparewith" id="select1" [(ngModel)]="newWriter">
                             <option *ngFor="let data of writers" [ngValue]="data.id">{{data.name}}
                             </option>
                         
                         </select>
                     </div>
                     <div>
-                        <select class="form-select" formControlName="type" [compareWith]="comparewith2" id="select1">
+                        <select class="form-select" formControlName="type" [compareWith]="comparewith2" id="select1" [(ngModel)]="newType">
                             <option *ngFor="let data of types" [ngValue]="data.id">{{data.name}}</option>
                         
                         
@@ -34,7 +34,7 @@
                     </div>
                     <div style="margin-top: 10px; margin-bottom: 10px; width: 380px;">
                         <span *ngFor="let item of formats">
-                            <input type="radio" formControlName="format" [value]="item.id" class="ms-2 me-1"/>
+                            <input type="radio" formControlName="format" [value]="item.id" class="ms-2 me-1" [(ngModel)]="newFormat"/>
                             <label style="color: aliceblue;">{{item.format}}</label>
                         
                         
@@ -42,7 +42,7 @@
                     </div>
                     
                     <div>
-                        <input class="form-check-input ms-2" type="checkbox" id="signed" formControlName="signed"/>
+                        <input class="form-check-input ms-2" type="checkbox" id="signed" formControlName="signed" [(ngModel)]="newSigned"/>
                         <label style="color: aliceblue; margin-left: 10px;">Signed</label>
                     </div>
                     <div>
@@ -153,7 +153,7 @@
                     <label style="color: rgb(0, 0, 0); margin-left: 10px;">Signed</label>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Salvar ✏💾</button>
+                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Save ✏💾</button>
                 </div>
                 
             
@@ -184,6 +184,13 @@
    
                 
         </div>
+        <div class="alert alert-success label1" role="alert"  [ngClass]="{'transition1': message == true , 'transition2': message == false}">
+            {{state === 'added_book' ? 'The book has been added successfully' :  
+                        state === 'update_success' ? 'The book has been updated successfully' :
+                        state === 'delete_success'?  'The book has been deleted successfully' : 
+                        state === 'book_exists' ? 'The book already exists': 
+                        state === 'incomplete_form' ? 'The form is incomplete': ''}} 
+          </div>
 
     </div>
     

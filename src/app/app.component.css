@@ -243,3 +243,13 @@
     
     margin-left: auto;
 }
+
+.label1{
+    display: flex;
+    width: 600px;
+    position: fixed;
+    top: 100%;
+    
+    position: fixed;
+ 
+}
