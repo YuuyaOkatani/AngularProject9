@@ -19,14 +19,14 @@
                     
                     
                     <div>
-                        <select class="form-select" formControlName="writer" [compareWith]="comparewith" id="select1" [(ngModel)]="newWriter">
+                        <select class="form-select" formControlName="writerId" [compareWith]="comparewith" id="select1" [(ngModel)]="newWriter">
                             <option *ngFor="let data of writers" [ngValue]="data.id">{{data.name}}
                             </option>
                         
                         </select>
                     </div>
                     <div>
-                        <select class="form-select" formControlName="type" [compareWith]="comparewith2" id="select1" [(ngModel)]="newType">
+                        <select class="form-select" formControlName="typeId" [compareWith]="comparewith2" id="select1" [(ngModel)]="newType">
                             <option *ngFor="let data of types" [ngValue]="data.id">{{data.name}}</option>
                         
                         
@@ -34,7 +34,7 @@
                     </div>
                     <div style="margin-top: 10px; margin-bottom: 10px; width: 380px;">
                         <span *ngFor="let item of formats">
-                            <input type="radio" formControlName="format" [value]="item.id" class="ms-2 me-1" [(ngModel)]="newFormat"/>
+                            <input type="radio" formControlName="formatId" [value]="item.id" class="ms-2 me-1" [(ngModel)]="newFormat"/>
                             <label style="color: aliceblue;">{{item.format}}</label>
                         
                         
@@ -114,7 +114,7 @@
 
             
            
-                        <select class="form-select"  id="select2" formControlName="writer" [(ngModel)]="newWriter" >
+                        <select class="form-select"  id="select2" formControlName="writerId" [(ngModel)]="newWriter" >
                             <option *ngFor="let data of writers " [ngValue]="data.id"   >{{data.name}}
                             </option>
                         
@@ -130,7 +130,7 @@
                         </p>
                
               
-                        <select class="form-select"  id="select2" formControlName="type" [(ngModel)]="newType">
+                        <select class="form-select"  id="select2" formControlName="typeId" [(ngModel)]="newType">
                             <option *ngFor="let data of types" [ngValue]="data.id">{{data.name}}
                             </option>
                         
@@ -141,7 +141,7 @@
                 </div>
                 <div style="margin-top: 10px; margin-bottom: 10px; width: 380px;">
                     <span *ngFor="let item of formats" >
-                        <input type="radio" formControlName="format" [value]="item.id" [(ngModel)]="newFormat" class="ms-2 me-1"/>
+                        <input type="radio" formControlName="formatId" [value]="item.id" [(ngModel)]="newFormat" class="ms-2 me-1"/>
                         <label style="color: rgb(0, 0, 0);">{{item.format}}</label>
                     
                     

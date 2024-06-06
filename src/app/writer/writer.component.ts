@@ -19,8 +19,8 @@ import { write } from 'node:fs';
 export class WriterComponent implements OnInit {
   Forms: FormGroup; 
   nationality: nationality[] = []; 
-  gender: gender[] = []; 
-  writer: writer[] = [];
+  genders: gender[] = []; 
+  writers: writer[] = [];
 
   newName: any; 
   newNationality: any; 
@@ -47,8 +47,8 @@ export class WriterComponent implements OnInit {
     this.Forms = formbuilder.group({
       id: [],
       name: ['', [Validators.required]],
-      nationality: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
+      nationalityId: ['', [Validators.required]],
+      genderId: ['', [Validators.required]],
       phone:['', [Validators.required]], 
       age: ['', [Validators.required]],
    
@@ -66,8 +66,8 @@ export class WriterComponent implements OnInit {
 
   loadWriters(){
     this.writerservice.getWriters().subscribe(data => {
-      this.writer = data;
-      console.log(this.writer)
+      this.writers = data;
+      console.log(this.writers)
     })
 
 
@@ -77,8 +77,8 @@ export class WriterComponent implements OnInit {
   loadGender(){
     this.genderservice.getGenders().subscribe(
       data => {
-        this.gender = data;
-        console.log(this.gender)
+        this.genders = data;
+        console.log(this.genders)
       }
     )
 
@@ -118,25 +118,21 @@ export class WriterComponent implements OnInit {
   }
 
   check(){
-    let array = [this.newName, this.newNationality, this.newGender, this.newPhone, this.newAge];
-    array.forEach(element => {
-      if(element == null || element == undefined || element == '') {
-          this.Message('incomplete_form')
-      }
-    })
-    if(this.state != 'incomplete_form'){
-      
-      this.writer.forEach(writer => {
-        if(this.newName.toLowerCase().trim() == writer.name.toLowerCase().trim()) {
+    if(this.Forms.valid){
+      this.writers.forEach(writer => {
+        if(writer.name.toLowerCase().trim() == this.newName.trim().toLowerCase()){
+   
           this.Message('writer_exists')
           
         }
       })
-
-      if(this.state !== 'writer_exists'){
-        this.Message('added_writer')
-            this.addWriter()
+      if(this.state == ''){
+        this.addWriter()
+        this.Message('added_writer') 
       }
+    }
+    else{
+      this.Message('incomplete_form')
     }
     
     
@@ -146,7 +142,7 @@ export class WriterComponent implements OnInit {
   addWriter(){
     this.writerservice.addWriter(this.Forms.value).subscribe({
             next: data => {
-              this.writer.push(data);
+              this.writers.push(data);
               this.Forms.reset();
               this.Message('added_writer')
             
@@ -154,7 +150,9 @@ export class WriterComponent implements OnInit {
           })
   }
 
-  get genders(): any{
+
+
+  get gender(): any{
     return this.Forms.get('gender');
 
   }
@@ -208,7 +206,7 @@ export class WriterComponent implements OnInit {
 
         this.selected.id = this.holder
         
-        this.writer.forEach(data => {
+        this.writers.forEach(data => {
             if(data.name.trim().toLowerCase() === this.selected.name.trim().toLowerCase()){
               this.Message('writer_exists')
             
@@ -241,8 +239,8 @@ export class WriterComponent implements OnInit {
         
         this.writerservice.deleteWriter(this.selected).subscribe({
           next: () => {
-            const index = this.writer.indexOf(this.selected);
-            this.writer.splice(index, 1);
+            const index = this.writers.indexOf(this.selected);
+            this.writers.splice(index, 1);
             this.Forms.reset();
             this.Message('delete_success')
         

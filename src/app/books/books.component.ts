@@ -50,11 +50,11 @@ export class BooksComponent implements OnInit {
 
     this.Forms = formbuilder.group({
       id: [],
-      name:[''], 
-      type: [''], 
-      writer: [''],
-      format:[''],
-      signed: [false]
+      name:['', [Validators.required]], 
+      typeId: ['', [Validators.required]], 
+      writerId: ['', [Validators.required]],
+      formatId:['', [Validators.required]],
+      signed: [false, [Validators.required]]
    
 
     })
@@ -140,29 +140,22 @@ export class BooksComponent implements OnInit {
   }
 
   check(){
-    let array = [this.newName, this.newWriter, this.newFormat, this.newSigned, this.newType];
-    array.forEach(element => {
-      if(element == null || element == undefined || element == '') {
-          this.Message('incomplete_form')
-      }
-    })
-    if(this.state != 'incomplete_form'){
-      
-      this.books.forEach(book => {
-        if(this.newName.toLowerCase().trim() === book.name.toLowerCase().trim()) {
+    if(this.Forms.valid){
+      this.books.forEach(book =>{
+        if(book.name.trim().toLowerCase() === this.newName.trim().toLowerCase()){
           this.Message('book_exists')
           
-          
+        }
+      })
+      if(this.state == ''){
+        this.Message('added_book')
+        this.addBook()
       }
-      
-    
-    })
-    if(this.state != 'book_exists'){
-      this.Message('added_book')
-          this.addBook()
     }
-    
+    else{
+      this.Message('incomplete_form')
     }
+   
     
           //TODO create code blocks to check if all values from the form are valid and difrent from null or '' or undefined
   }

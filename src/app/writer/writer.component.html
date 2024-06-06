@@ -23,15 +23,15 @@
                         <input id="input1" placeholder="phone" type="number" formControlName="phone" [(ngModel)]="newPhone">
                     </div>
                     <div>
-                        <select class="form-select" formControlName="nationality" [compareWith]="comparewith" id="select1" [(ngModel)]="newNationality">
+                        <select class="form-select" formControlName="nationalityId" [compareWith]="comparewith" id="select1" [(ngModel)]="newNationality">
                             <option *ngFor="let data of nationality" [ngValue]="data.id">{{data.country}}
                             </option>
                         
                         </select>
                     </div>
                     <div>
-                        <select class="form-select" formControlName="gender" [compareWith]="comparewith2" id="select1"  [(ngModel)]="newGender">
-                            <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}</option>
+                        <select class="form-select" formControlName="genderId" [compareWith]="comparewith2" id="select1"  [(ngModel)]="newGender">
+                            <option *ngFor="let data of genders" [ngValue]="data.id">{{data.gender}}</option>
                         
                         
                         </select>
@@ -62,7 +62,7 @@
             </div>
             <div id="component4">
                 <div>
-                    <div id="component5" *ngFor="let item of writer">
+                    <div id="component5" *ngFor="let item of writers">
                         <p>
                             Name: {{item.name}}
                         </p>
@@ -114,7 +114,7 @@
 
             
            
-                        <select class="form-select"  id="select2" formControlName="nationality" [(ngModel)]="newNationality" >
+                        <select class="form-select"  id="select2" formControlName="nationalityId" [(ngModel)]="newNationality" >
                             <option *ngFor="let data of nationality" [ngValue]="data.id"   >{{data.country}}
                             </option>
                         
@@ -130,7 +130,7 @@
                         </p>
                
               
-                        <select class="form-select"  id="select2" formControlName="gender" [(ngModel)]="newGender">
+                        <select class="form-select"  id="select2" formControlName="genderId" [(ngModel)]="newGender">
                             <option *ngFor="let data of gender" [ngValue]="data.id">{{data.gender}}
                             </option>
                         
@@ -140,7 +140,7 @@
                     
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Salvar ✏💾</button>
+                    <button type="button" class="btn btn-outline-success" (click)="Activate('togglar5' )">Save ✏💾</button>
                 </div>
                 
             

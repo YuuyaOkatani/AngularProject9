@@ -2,52 +2,44 @@
   "writers": [
     {
       "id": 1,
-      "name": "jorge",
-      "nationality": 2,
-      "gender": 1,
-      "phone": 19992,
-      "age": 19
+      "name": "132",
+      "nationalityId": 2,
+      "genderId": 1,
+      "phone": 213,
+      "age": 123
     },
     {
       "id": 2,
-      "name": "2",
-      "nationality": 1,
-      "gender": 1,
-      "phone": 312321,
-      "age": 31
+      "name": "123131312",
+      "nationalityId": 1,
+      "genderId": 1,
+      "phone": 123123,
+      "age": 213123
     }
   ],
   "books": [
     {
       "id": 1,
-      "name": "18984",
-      "type": 1,
-      "writer": 1,
-      "format": 2,
+      "name": "123",
+      "typeId": 2,
+      "writerId": 1,
+      "formatId": 1,
+      "signed": true
+    },
+    {
+      "id": 2,
+      "name": "123132",
+      "typeId": 1,
+      "writerId": 2,
+      "formatId": 1,
       "signed": true
     },
     {
       "id": 3,
-      "name": "213",
-      "type": 1,
-      "writer": 1,
-      "format": 2,
-      "signed": true
-    },
-    {
-      "id": 4,
-      "name": "123",
-      "type": 2,
-      "writer": 1,
-      "format": 2,
-      "signed": true
-    },
-    {
-      "id": 5,
-      "name": "123p",
-      "type": 1,
-      "writer": 1,
-      "format": 2,
+      "name": "321321",
+      "typeId": 1,
+      "writerId": 1,
+      "formatId": 2,
       "signed": true
     }
   ],

@@ -5,9 +5,9 @@ import { writer } from "./writer";
 export interface books{
     id: number; 
     name: string;
-    type: type;
-    writer: writer; 
-    format: format; 
+    typeId: type;
+    writerId: writer; 
+    formatId: format; 
     signed: boolean;
 
 }
