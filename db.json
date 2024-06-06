@@ -2,44 +2,52 @@
   "writers": [
     {
       "id": 1,
-      "name": "132",
-      "nationalityId": 2,
+      "name": "alfredo",
+      "nationalityId": 1,
       "genderId": 1,
-      "phone": 213,
-      "age": 123
+      "phone": 192992191991,
+      "age": 19
     },
     {
       "id": 2,
-      "name": "123131312",
+      "name": "maria",
       "nationalityId": 1,
-      "genderId": 1,
-      "phone": 123123,
-      "age": 213123
+      "genderId": 2,
+      "phone": 124213432,
+      "age": 18
+    },
+    {
+      "id": 3,
+      "name": "hoshino ai",
+      "nationalityId": 4,
+      "genderId": 2,
+      "phone": 12312321321,
+      "age": 32
     }
   ],
   "books": [
     {
       "id": 1,
-      "name": "123",
-      "typeId": 2,
+      "name": "1984",
+      "typeId": 1,
       "writerId": 1,
       "formatId": 1,
       "signed": true
     },
     {
       "id": 2,
-      "name": "123132",
-      "typeId": 1,
-      "writerId": 2,
-      "formatId": 1,
+      "name": "tutorial de como ser um dev",
+      "typeId": 2,
+      "writerId": 3,
+      "formatId": 2,
       "signed": true
     },
     {
       "id": 3,
-      "name": "321321",
-      "typeId": 1,
-      "writerId": 1,
-      "formatId": 2,
+      "name": "camões",
+      "typeId": 5,
+      "writerId": 2,
+      "formatId": 3,
       "signed": true
     }
   ],
